@@ -22,3 +22,17 @@ func TestMain(t *testing.T) {
 		}
 	}
 }
+
+func Benchmark(b *testing.B) {
+	list := make([]int, 1000)
+	for i := 0; i < 1000; i++ {
+		list[i] = i
+	}
+	item := 500
+
+	b.ResetTimer()
+
+	for i := 0; i < b.N; i++ {
+		main(list, item)
+	}
+}
